@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { BoardComponent } from './board/board.component';
 import { LetterComponent } from './letter/letter.component';
-import { KeysPipe } from './board/keys.pipe';
 import { KeyBoardComponent } from './key-board/key-board.component';
 import { GameStatusComponent } from './game-status/game-status.component';
 
@@ -16,15 +15,11 @@ import { GameStatusComponent } from './game-status/game-status.component';
     TitleComponent,
     BoardComponent,
     LetterComponent,
-    KeysPipe,
     KeyBoardComponent,
-    GameStatusComponent
+    GameStatusComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
