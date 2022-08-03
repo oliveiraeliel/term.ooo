@@ -1,27 +1,42 @@
-main {
-  // width: 400px;
+.row {
+  flex-wrap: nowrap;
+}
+button {
+  margin: 3px;
+  height: 40px;
+}
+.btn-letter {
+  width: 50px;
+}
+.btn-enter {
+  width: 120px;
+}
 
+.row-2 {
+  margin-left: 10px;
+}
+.row-3 {
+  margin-left: 20px;
+}
+
+@media (max-width: 605px) {
   button {
-    margin: 3px;
-    height: 40px;
+    margin: 0.5vw;
   }
   .btn-letter {
-    width: 50px;
+    width: 8vw;
   }
   .btn-enter {
-    width: 120px;
+    width: 15vw;
   }
-
-  // display: flex;
-
-  // .row{
-
-  // }
+  .btn-backspace {
+    width: 15vw;
+  }
 
   .row-2 {
-    margin-left: 10px;
+    margin-left: 5px;
   }
   .row-3 {
-    margin-left: 20px;
+    margin-left: 15px;
   }
 }

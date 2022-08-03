@@ -1,25 +1,15 @@
-<main>
-  <!-- <div *ngFor="let t of terms; let i = index">
-    {{ i }}<app-letter *ngFor="let a of t" [letter]="'a'"></app-letter>
+<div class="board" *ngFor="let row of terms; index as i">
+  <div class="row">
+    <input
+      [style.background]="setColor(i, j)"
+      [style.color]="positions[i][j] !== 0 && 'white'"
+      maxlength="1"
+      *ngFor="let val of row; index as j"
+      [value]="val"
+      (keyup)="keyPress($event, i, j)"
+      [disabled]="counter !== i"
+    />
   </div>
-  <app-letter [letter]="'a'"></app-letter> -->
-  <!-- <ul *ngFor="let x of positions; index as j">
-    <li *ngFor="let item of x; index as i">{{ item }} {{ i }} {{ j }}</li>
-  </ul> -->
-  <div class="board" *ngFor="let row of terms; index as i">
-    <div class="row">
-      <input
-        [style.background]="setColor(i, j)"
-        [style.color]="positions[i][j] !== 0 && 'white'"
-        maxlength="1"
-        *ngFor="let val of row; index as j"
-        [value]="val"
-        (keyup)="keyPress($event, i, j)"
-        [disabled]="counter !== i"
-      />
-    </div>
-  </div>
-  <button (click)="verifyTerm()">Verify</button>
-  <button (click)="newGame()">New Game</button>
-
-</main>
+</div>
+<button (click)="verifyTerm()">Verify</button>
+<button (click)="newGame()">New Game</button>

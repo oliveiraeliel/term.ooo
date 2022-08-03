@@ -1,18 +1,20 @@
 nav {
   width: 100vw;
-  height: 50px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  margin: 10px 0;
 
   .status {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 5px;
     height: 40px;
     border-radius: 10px;
-    // background-color: black;
     min-width: 300px;
     color: white;
   }

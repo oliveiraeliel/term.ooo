@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-board',
@@ -7,26 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
   answer: Array<string | null>;
-  term: Array<string | null>;
   terms: Array<Array<string | null>>;
   positions: Array<Array<number>>;
-  plays: number;
   win: boolean;
   counter: number;
+  status: string | null;
 
-  constructor() {}
+  constructor(private data: DataService) {}
 
   ngOnInit(): void {
     this.newGame();
+    this.data.currentMessage.subscribe((status) => (this.status = status));
+    // this.keys.currentValue.subscribe((terms)=>this.terms=temrs);
   }
 
   newGame(): void {
+    this.data.changeMessage(null);
+    this.status = null;
     this.win = false;
     this.counter = 0;
-    this.plays = 6;
     this.answer = ['E', 'L', 'I', 'E', 'L'];
-    // this.term = ['E', 'L', 'I', 'E', 'L'];
-    // this.term = Array(5).fill(null);
     this.terms = Array(6).fill([]);
     this.positions = Array(6).fill([]);
     for (let i = 0; i < 6; i++) {
@@ -52,11 +53,17 @@ export class BoardComponent implements OnInit {
     }
     if (correct === 5) {
       this.win = true;
-
+      this.data.changeMessage('win');
       this.counter = -1;
       return;
     }
+
+    if (this.counter === 5) {
+      this.data.changeMessage('game-over');
+      return;
+    }
     this.counter++;
+    console.log(this.status);
   }
 
   changeLetter(letter: string, position: number): void {

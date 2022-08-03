@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-game-status',
@@ -6,12 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./game-status.component.scss'],
 })
 export class GameStatusComponent implements OnInit {
-  @Input() status: string | null;
+  // @Input() status: string | null;
 
-  constructor() {}
+  status: string | null;
+
+  constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.status = null;
+    this.data.currentMessage.subscribe((status) => (this.status = status));
   }
 
   handleStatus(): string {
@@ -19,7 +22,8 @@ export class GameStatusComponent implements OnInit {
       return 'green';
     } else if (this.status === 'game-over') {
       return 'red';
+    } else {
+      return 'transparent';
     }
-    return 'invisible';
   }
 }
