@@ -1,14 +1,12 @@
-<div class="board" *ngFor="let row of terms; index as i">
-  <div class="row">
-    <input
-      [style.background]="setColor(i, j)"
-      [style.color]="positions[i][j] !== 0 && 'white'"
-      maxlength="1"
+<div class="board">
+  <div class="row" *ngFor="let row of terms; index as i">
+    <app-letter
       *ngFor="let val of row; index as j"
-      [value]="val"
-      (keyup)="keyPress($event, i, j)"
       [disabled]="counter !== i"
-    />
+      [letter]="val"
+      (keyup)="keyPress($event, i, j)"
+      [right]="positions[i][j]"
+    ></app-letter>
   </div>
 </div>
 <button (click)="verifyTerm()">Verify</button>

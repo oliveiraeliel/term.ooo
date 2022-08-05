@@ -1,5 +1,10 @@
 <nav>
-  <div class="status" [style.background-color]="handleStatus()">
+  <div
+    class="status"
+    [@status]="
+      status === 'win' ? 'success' : status === 'game-over' ? 'fail' : 'none'
+    "
+  >
     {{ status }}
   </div>
 </nav>

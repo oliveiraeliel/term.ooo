@@ -1,3 +1,8 @@
-<!-- <input value={{letter}} /> -->
-
-<input value="adsfas"/>
+<input
+  maxlength="1"
+  (focusout)="setFocus(false)"
+  (focus)="setFocus(true)"
+  [@focus]="handleAnimation()"
+  [disabled]="disabled"
+  [value]="letter"
+/>

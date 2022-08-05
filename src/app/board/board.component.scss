@@ -7,18 +7,9 @@
   flex-direction: row;
 }
 
-input {
+app-letter {
   width: 63px;
   height: 63px;
-  margin: 3px;
-  border-radius: 10px;
-  border: 1px solid black;
-  text-align: center;
-}
-
-@media (max-width: 630px) {
-  input {
-    width: 12.5vw;
-    height: 12.5vw;
-  }
+  
+  margin: 5px;
 }

@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 export class BoardComponent implements OnInit {
   answer: Array<string | null>;
   terms: Array<Array<string | null>>;
-  positions: Array<Array<number>>;
+  positions: Array<Array<0 | 1 | 2 | 3>>;
   win: boolean;
   counter: number;
   status: string | null;
@@ -19,7 +19,6 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.newGame();
     this.data.currentMessage.subscribe((status) => (this.status = status));
-    // this.keys.currentValue.subscribe((terms)=>this.terms=temrs);
   }
 
   newGame(): void {
@@ -63,13 +62,6 @@ export class BoardComponent implements OnInit {
       return;
     }
     this.counter++;
-    console.log(this.status);
-  }
-
-  changeLetter(letter: string, position: number): void {
-    if (!this.win) {
-      this.terms[this.counter][position] = letter;
-    }
   }
 
   keyPress(event: KeyboardEvent, i: number, j: number): void {
@@ -77,21 +69,6 @@ export class BoardComponent implements OnInit {
       this.terms[i][j] = null;
     } else if (event.code.includes(`Key${event.key.toUpperCase()}`)) {
       this.terms[i][j] = event.key.toUpperCase();
-    }
-  }
-
-  setColor(i: number, j: number): string | null {
-    switch (this.positions[i][j]) {
-      case 0:
-        return 'white';
-      case 1:
-        return 'green';
-      case 2:
-        return 'yellow';
-      case 3:
-        return 'red';
-      default:
-        return 'white';
     }
   }
 }
